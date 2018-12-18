@@ -1,0 +1,27 @@
+X = [4978, 11735, 14216, 14470, 38120, 51135, 64630, 67060, 73429, 99233, 4978]
+
+
+def stats(values):
+    output = []
+
+    mean = round(sum(values)/len(values), 2)
+    occurrences = dict()
+
+    for n, el in enumerate(values):
+        if el not in occurrences.keys():
+            occurrences[el] = 1
+        else:
+            occurrences[el] += 1
+
+    sorted_values = sorted(values)
+    mode = sorted_values[int(len(sorted_values)/2)]
+
+    output.append(max(occurrences, key=occurrences.get))
+    output.append(mean)
+    output.append(mode)
+
+    return output
+
+
+if __name__ == "__main__":
+    print(stats(X))
